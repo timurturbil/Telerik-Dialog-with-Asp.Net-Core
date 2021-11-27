@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Form Page";
+}
+@model TelerikAspNetCoreApp2.Models.FormModel
+
+<form asp-action="Dialog" asp-controller="Home">
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName" placeholder="Your name goes here"/>
+    <button type="Submit">Submit</button> 
+</form>

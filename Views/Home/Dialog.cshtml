@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Form Home Page";
+}
+<div id="example">
+    @(Html.Kendo().Dialog()
+        .Name("dialog")
+        .Title("Telerik Dialog")
+        .Content($"<p>Here is your input; {@ViewData["name"]}<p>")
+        .Width(400)
+        .Size("10.00")
+        .Modal(false)
+        .Actions(actions =>
+        {
+            actions.Add().Text("Close").Primary(true);
+        })
+        .Events(ev => ev.Close("onClose").Open("onOpen"))
+    )
+
+    @(Html.Kendo().Button()
+        .Name("showDialogBtn")
+        .HtmlAttributes(new { style = "display:none;", @class = "hide-on-narrow" })
+        .Content("Open Dialog")
+        .Events(ev => ev.Click("showDialog"))
+    )
+</div>
+
+<script>
+    function onClose() {
+        $("#showDialogBtn").fadeIn();
+    }
+
+    function onOpen() {
+        $("#showDialogBtn").fadeOut();
+    }
+
+    function showDialog() {
+        $('#dialog').data("kendoDialog").open();
+    }
+</script>
+
+<style>
+    #example {
+        height: 500px;
+        background-color: grey;
+    }
+</style>
